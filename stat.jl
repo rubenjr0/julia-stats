@@ -34,7 +34,7 @@ function help()
     println("= pred_lin(x, y) Construye un predictor lineal")
     println("= pred_exp(x, y) Construye un predictor exponencial")
     printstyled("== Error ==\n", color=:reverse)
-    println("= err(x, y, p) Calcula el error del predictor")
+    println("= ecm(x, y, p) Calcula el error cuadratico medio del predictor")
     printstyled("== Visualización ==\n", color=:reverse)
     println("= plot_reg(x, y, p) Visualiza la regresion con el predictor p\n")
 end
@@ -54,6 +54,9 @@ ni(x) = [count(==(xi), x) for xi in unique(x)]
 fi(x) = ni(x) ./ length(x)
 Ni(x) = x |> ni |> cumsum
 Fi(x) = x |> fi |> cumsum
+
+var_from_ni(u, n) = []
+
 #= 
 function ni(x)
     d = Dict()
@@ -131,7 +134,7 @@ function pred_exp(x, y)
 end
 
 # Errors
-err(x,y,p) = sum((p(x,y).(x) .- y).^2)
+ecm(x,y,p) = sum((p(x,y).(x) .- y).^2)
 
 # Plots
 function plot_reg(x, y, p)
