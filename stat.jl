@@ -134,7 +134,7 @@ function pred_exp(x, y)
 end
 
 # Errors
-ecm(x,y,p) = sum((p(x,y).(x) .- y).^2)
+ecm(x,y,p) = sum((p(x,y).(x) .- y).^2) / length(x)
 
 # Plots
 function plot_reg(x, y, p)
