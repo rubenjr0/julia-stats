@@ -37,7 +37,8 @@ function help()
     println("= pred_lin(x, y) Construye un predictor lineal")
     println("= pred_exp(x, y) Construye un predictor exponencial")
     printstyled("== Error ==\n", color=:reverse)
-    println("= ecm(x, y, p) Calcula el error cuadratico medio del predictor\n")
+    println("= sse(x, y, p) Suma de errores al cuadrado del predictor")
+    println("= mse(x, y, p) Error cuadratico medio del predictor\n")
     #printstyled("== Visualización ==\n", color=:reverse)
     #println("= plot_reg(x, y, p) Visualiza la regresion con el predictor p\n")
 end
@@ -128,6 +129,7 @@ end
 # Correlation
 pcorr(x,y) = cov(x,y) / sqrt(var(x) * var(y)) 
 
+
 # Predictors
 function pred_lin(x, y)
     a, b = reg_lin(x, y)
@@ -140,7 +142,8 @@ function pred_exp(x, y)
 end
 
 # Errors
-ecm(x,y,p) = sum((p(x,y).(x) .- y).^2) / length(x)
+sse(x,y,p) = sum((p(x,y).(x) .- y).^2)
+mse(x,y,p) = sse(x,y,p) / length(x)
 
 #= Plots
 function plot_reg(x, y, p)
