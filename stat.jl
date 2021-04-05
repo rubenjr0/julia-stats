@@ -16,7 +16,8 @@ function help()
     println("= ni(x) Frecuencias absolutas")
     println("= fi(x) Frecuencias relativas")
     println("= Ni(x) Frecuencias absolutas acumuladas")
-    println("= Fi(x) Frecuencias relativas acumuladas\n")
+    println("= Fi(x) Frecuencias relativas acumuladas")
+    println("= var_from_ni(u,n) Genera una variable a partir de sus frecuencias absolutas\n")
     printstyled("== Momentos ==\n", color=:reverse)
     println("= mrc(x,r,c) Momento de orden R en el punto C")
     println("= mr(x) Momento ordinario de orden R")
@@ -55,7 +56,7 @@ fi(x) = ni(x) ./ length(x)
 Ni(x) = x |> ni |> cumsum
 Fi(x) = x |> fi |> cumsum
 
-var_from_ni(u, n) = []
+var_from_ni(u, n) = vcat([repeat([uj], nj) for (uj, nj) in zip(u,n)]...)
 
 #= 
 function ni(x)
