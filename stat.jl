@@ -1,5 +1,5 @@
-using Plots
-theme(:wong2)
+# using Plots
+# theme(:wong2)
 
 function help()
     printstyled("== Tema 1 ==\n", color=:reverse)
@@ -35,9 +35,9 @@ function help()
     println("= pred_lin(x, y) Construye un predictor lineal")
     println("= pred_exp(x, y) Construye un predictor exponencial")
     printstyled("== Error ==\n", color=:reverse)
-    println("= ecm(x, y, p) Calcula el error cuadratico medio del predictor")
-    printstyled("== Visualización ==\n", color=:reverse)
-    println("= plot_reg(x, y, p) Visualiza la regresion con el predictor p\n")
+    println("= ecm(x, y, p) Calcula el error cuadratico medio del predictor\n")
+    #printstyled("== Visualización ==\n", color=:reverse)
+    #println("= plot_reg(x, y, p) Visualiza la regresion con el predictor p\n")
 end
 
 # Base
@@ -137,8 +137,9 @@ end
 # Errors
 ecm(x,y,p) = sum((p(x,y).(x) .- y).^2) / length(x)
 
-# Plots
+#= Plots
 function plot_reg(x, y, p)
     scatter(x, y, legend=false)
     plot!(x, p(x, y))
 end
+=#
