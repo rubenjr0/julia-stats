@@ -31,6 +31,8 @@ function help()
     printstyled("== Regresion ==\n", color=:reverse)
     println("= reg_lin(x, y) Regresion lineal ax+b")
     println("= reg_exp(x, y) Regresion exponencial a*b^x")
+    printstyled("== Correlacion ==\n", color=:reverse)
+    println("= pcorr(x, y) Coeficiente de correlación de Pearson")
     printstyled("== Predictores ==\n", color=:reverse)
     println("= pred_lin(x, y) Construye un predictor lineal")
     println("= pred_exp(x, y) Construye un predictor exponencial")
@@ -122,6 +124,9 @@ function reg_exp(x, y)
     b = media(logy) - a * media(x)
     return [exp(a), exp(b)]
 end
+
+# Correlation
+pcorr(x,y) = cov(x,y) / sqrt(var(x) * var(y)) 
 
 # Predictors
 function pred_lin(x, y)
